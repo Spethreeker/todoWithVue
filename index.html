@@ -4,8 +4,14 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
         <script src="Vue.js"></script>
+        <style>
+            .todo-item{
+                padding: 5px;
+                margin: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }    
+        </style>
     </head>
     <body>
     <div id="app">
@@ -13,7 +19,7 @@
         <todo-item
         v-for="item in groceryList"
         v-bind:todo="item"
-        vbind:key="item.id">
+        v-bind:key="item.id">
         </todo-item>
       </ol>
       </div>
@@ -21,8 +27,11 @@
     <script>
     Vue.component('todo-item', {
         props: ['todo'],
-        template: '<li>{{ todo.text }}</li>'
+        template: `<li class="todo-item">
+                        {{todo.text}}
+                    </li>`
     })
+   
     var app = new Vue({
         el: '#app',
         data: {
